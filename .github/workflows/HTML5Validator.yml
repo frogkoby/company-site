@@ -15,4 +15,4 @@ jobs:
       - name: Validate HTML5
         uses: Cyb3r-Jak3/html5validator-action@v7.1.0
         with:
-          root: /company-site
+          root: ./
