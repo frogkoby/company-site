@@ -3,17 +3,12 @@ name: Lighthouse CI
 on: [push]
 
 jobs:
-  lighthouse-test:
-    name: Lighthouse CI
+  lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-      - run: npm ci
-      - run: npm run build
+    - uses: actions/checkout@master
+    - name: Lighthouse
+      uses: company-site/lighthouse-check-action@master
+      with:
+        urls: 'https://frogkoby.github.io/company-site/,https://www.google.com'
 
-
-      - uses: treosh/lighthouse-ci-actions@v2
-        with:
-          configPath: '.github/workflows/lighthouse.json'
-          uploadArtifacts: true
