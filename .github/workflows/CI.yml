@@ -19,3 +19,6 @@ jobs:
         with:
           configPath: '.github/workflows/lighthouse.json'
           uploadArtifacts: true
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ tOOdrWvAB5HCMJRk:24647650:vwNbZNjN }}
+          
