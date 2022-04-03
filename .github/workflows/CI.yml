@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Lighthouse
-      uses: company-site/lighthouse-check-action@master
+      uses: foo-software/lighthouse-check-action@master
       with:
         urls: 'https://frogkoby.github.io/company-site/,https://www.google.com'
 
