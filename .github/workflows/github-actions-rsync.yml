@@ -1,4 +1,4 @@
-name: Create Sandbox
+name: Deploy by rsync
 
 on: pull_request
 
@@ -15,8 +15,8 @@ jobs:
         uses: trendyminds/github-actions-rsync@master
         with:
           RSYNC_OPTIONS: -avzr --delete --exclude node_modules --exclude '.git*'
-          RSYNC_TARGET: /path/to/target/folder/on/server
-          RSYNC_SOURCE: /src/public/
+          RSYNC_TARGET: /home/users/0/sub.jp-frog-test/web
+          RSYNC_SOURCE: /company-site
         env:
           SSH_PRIVATE_KEY: ${{secrets.SSH_KEY}}
           SSH_USERNAME: ${{secrets.SSH_ACOUNT}}
