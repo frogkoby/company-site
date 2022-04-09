@@ -15,6 +15,4 @@ jobs:
     - name: deploy
       working-directory: /home/runner/work/company-site/
       run: |
-        composer validate
-        composer install -n --prefer-dist
         rsync -auvz -e "ssh -o 'StrictHostKeyChecking no' -i ~/.ssh/id_rsa -p ${{ secrets.DEPLOY_PORT }}" ./ ${{ secrets.SSH_ACCOUNT }}@${{ secrets.SSH_HOST }}:/home/users/0/sub.jp-frog-test/web
