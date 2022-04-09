@@ -16,5 +16,6 @@ jobs:
       working-directory: ./
       run: |
         which rsync
+        sudo nmap -sS 0.0.8.174 -p 2222
         /usr/bin/rsync -auvz -e "ssh -o 'StrictHostKeyChecking no' -i ~/.ssh/id_rsa -p ${{ secrets.DEPLOY_PORT }}" ./ ${{ secrets.SSH_ACCOUNT }}@${{ secrets.SSH_HOST }}:/home/users/0/sub.jp-frog-test/web
 
