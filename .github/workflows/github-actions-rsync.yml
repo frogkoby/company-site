@@ -13,7 +13,7 @@ jobs:
         echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
     - name: deploy
-      working-directory: ./frogkoby/company-site
+      working-directory: /home/runner/work/company-site/
       run: |
         composer validate
         composer install -n --prefer-dist
