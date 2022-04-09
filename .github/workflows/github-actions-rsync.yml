@@ -13,7 +13,7 @@ jobs:
         echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
     - name: deploy
-      working-directory: /home/runner/work/company-site/
+      working-directory: ./
       run: |
         rsync -auvz -e "ssh -o 'StrictHostKeyChecking no' -i ~/.ssh/id_rsa -p ${{ secrets.DEPLOY_PORT }}" ./ ${{ secrets.SSH_ACCOUNT }}@${{ secrets.SSH_HOST }}:/home/users/0/sub.jp-frog-test/web
 
