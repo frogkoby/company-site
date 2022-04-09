@@ -21,3 +21,4 @@ jobs:
           SSH_PRIVATE_KEY: ${{secrets.SSH_KEY}}
           SSH_USERNAME: ${{secrets.SSH_ACOUNT}}
           SSH_HOSTNAME: ${{secrets.SSH_HOST}}
+          INPUT_RSYNC_TARGET: ${{secrets.SSH_PORT_NUMBER}}
