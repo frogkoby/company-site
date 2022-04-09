@@ -16,5 +16,5 @@ jobs:
     - name: deploy
       working-directory: ./
       run: |
-        ssh -o 'StrictHostKeyChecking no' -i ~/.ssh/id_rsa -p ${{ secrets.DEPLOY_PORT }} ${{ secrets.SSH_ACCOUNT }}@${{ secrets.SSH_HOST }}:/home/users/0/sub.jp-frog-test/web
+        rsync -auvz -e "ssh -o 'StrictHostKeyChecking no' -i ~/.ssh/id_rsa -p ${{ secrets.DEPLOY_PORT }}" ${{ secrets.SSH_ACCOUNT }}@${{ secrets.SSH_HOST }}:/home/users/0/sub.jp-frog-test/web
 
