@@ -16,5 +16,5 @@ jobs:
       working-directory: ./
       run: |
         which rsync
-        rsync -auvz -e "ssh -o UserKnownHostsFile=/dev/null -o 'StrictHostKeyChecking no' -i ~/.ssh/id_rsa -p 2222" ${{ secrets.SSH_ACCOUNT }}@${{ secrets.SSH_HOST }}:/home/users/0/sub.jp-frog-test/web
+        /usr/bin/rsync -auvz -e "ssh -o 'StrictHostKeyChecking no' -i ~/.ssh/id_rsa -p ${{ secrets.DEPLOY_PORT }}" ./ ${{ secrets.SSH_ACCOUNT }}@${{ secrets.SSH_HOST }}:/home/users/0/sub.jp-frog-test/web
 
