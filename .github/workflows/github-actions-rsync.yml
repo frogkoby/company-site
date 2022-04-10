@@ -11,7 +11,7 @@ jobs:
       uses: burnett01/rsync-deployments@5.2
       with:
         switches: -avzr --delete
-        path: /home/users/0/sub.jp-frog-test/web
+        path: ./
 
         remote_path: ${{ secrets.DEPLOY_PATH }}
         remote_host: ${{ secrets.SSH_HOST }}
