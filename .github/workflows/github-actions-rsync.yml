@@ -2,19 +2,19 @@ name: lolipop
 
 on: pull_request
 
-
-
-
-
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: ssh key generate
-      run: |
-        mkdir -p ~/.ssh/
-        echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-    - name: deploy
-      run: rsync -ahvz -e "ssh -i ~/.ssh/id_rsa -p ${{ secrets.DEPLOY_PORT }} -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" ./ ${{ secrets.SSH_ACCOUNT }}@${{ secrets.SSH_HOST }}:/home/users/0/sub.jp-frog-test/web --include-from=".github/rsync_include.txt" --exclude-from=".github/rsync_exclude.txt"
+    - name: rsync deployments
+      uses: burnett01/rsync-deployments@5.2
+      with:
+        switches: -avzr --delete
+        path: /home/users/0/sub.jp-frog-test/web
+
+        remote_path: ${{ secrets.DEPLOY_PATH }}
+        remote_host: ${{ secrets.SSH_HOST }}
+        remote_port: ${{ secrets.DEPLOY_PORT }}
+        remote_user: ${{ secrets.SSH_ACCOUNT }}
+        remote_key: ${{ secrets.SSH_KEY }}
