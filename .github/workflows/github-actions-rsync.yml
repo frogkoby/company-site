@@ -2,20 +2,17 @@ name: lolipop
 
 on: pull_request
 
-
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: gulp build
-        uses: actions/setup-node@v1
-      - run: yarn install && yarn build
-      - name: ssh key generate
-        run: echo "$SSH_KEY" > key && chmod 600 key
-        env:
-          SSH_KEY: ${{ secrets.SSH_KEY }}
-      - name: rsync deploy
-        run: ssh -t -t -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p ${{ secrets.DEPLOY_PORT }} ${{ secrets.SSH_ACCOUNT }}@${{ secrets.SSH_HOST }}:/home/users/0/sub.jp-frog-test/web
-
-
+    - uses: actions/checkout@v2
+    - name: ssh key generate
+      run: |
+        mkdir -p ~/.ssh/
+        echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+    - name: deploy
+      working-directory: ./
+      run: |
+        ssh -t -o 'StrictHostKeyChecking no' -i ~/.ssh/id_rsa -p ${{ secrets.DEPLOY_PORT }} ${{ secrets.SSH_ACCOUNT }}@${{ secrets.SSH_HOST }}:/home/users/0/sub.jp-frog-test/web
