@@ -16,3 +16,4 @@ jobs:
       working-directory: ./
       run: |
         ssh -t ${{ secrets.SSH_ACCOUNT }}@${{ secrets.SSH_HOST }} -i ~/.ssh/id_rsa -p 2222
+
