@@ -15,5 +15,5 @@ jobs:
     - name: deploy
       working-directory: ./
       run: |
-        ssh -t ${{ secrets.SSH_ACCOUNT }}@${{ secrets.SSH_HOST }} -i ~/.ssh/id_rsa -p 2222
+        ssh -o UserKnownHostsFile=/github/home/.ssh/known_hosts -tt ${{ secrets.SSH_ACCOUNT }}@${{ secrets.SSH_HOST }} -i ~/.ssh/id_rsa -p 2222
 
