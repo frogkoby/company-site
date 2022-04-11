@@ -12,9 +12,6 @@ jobs:
         mkdir -p ~/.ssh/
         echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        echo "github.com" > ~/.ssh/known_hosts
+        echo "${{ secrets.SSH_HOST }}" > ~/.ssh/known_hosts
     - name: deploy
-      working-directory: ./
-      run: |
-        rsync -auvz -e "ssh -o 'StrictHostKeyChecking no' -tt -i ~/.ssh/id_rsa -p ${{ secrets.DEPLOY_PORT }}" ./ ${{ secrets.SSH_ACCOUNT }}@${{ secrets.SSH_HOST }}:./web
-
+      run: rsync -ahvz -e "ssh -i ~/.ssh/id_rsa -p ${{ secrets.DEPLOY_PORT }} -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" ./ ${{ secrets.SSH_ACCOUNT }}@${{ secrets.SSH_HOST }}:/home/users/0/sub.jp-frog-test/web
