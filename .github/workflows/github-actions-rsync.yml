@@ -1,11 +1,20 @@
-- name: deploy to lolipop
-  on: pull_request
-  uses: AEnterprise/rsync-deploy@v1.0
-   env:
-       DEPLOY_KEY: ${{ secrets.SSH_KEY }}
-       ARGS: "-e -c -r --delete"
-       SERVER_PORT: ${{ secrets.DEPLOY_PORT }}
-       FOLDER: "./"
-       SERVER_IP: ${{ secrets.SSH_HOST }}
-       USERNAME: ${{ secrets.SSH_ACCOUNT }}
-       SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}
+name: Deployment for lolipop
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: deploy to server
+      uses: AEnterprise/rsync-deploy@v1.0
+      env:
+        DEPLOY_KEY: ${{ secrets.SSH_KEY}}
+        ARGS: "-e -c -r --delete"
+        SERVER_PORT: ${{ secrets.DEPLOY_PORT }}
+        FOLDER: "./"
+        SERVER_IP: ${{ secrets.SSH_HOST }}
+        USERNAME: ${{ secrets.SSH_ACCOUNT }}
+        SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}
