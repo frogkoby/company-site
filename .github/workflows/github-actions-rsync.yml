@@ -16,5 +16,5 @@ jobs:
     - name: deploy
       working-directory: ./
       run: |
-        ssh -o UserKnownHostsFile=/github/home/.ssh/known_hosts -tt ${{ secrets.SSH_ACCOUNT }}@${{ secrets.SSH_HOST }} -i ~/.ssh/id_rsa -p 2222
+        ssh -o 'StrictHostKeyChecking no' -tt ${{ secrets.SSH_ACCOUNT }}@${{ secrets.SSH_HOST }} -i ~/.ssh/id_rsa -p 2222
 
