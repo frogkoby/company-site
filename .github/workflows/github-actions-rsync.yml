@@ -1,17 +1,10 @@
-name: lolipop
-
-on: pull_request
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: ssh key generate
-      run: |
-        mkdir -p ~/.ssh/
-        echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        echo "${{ secrets.SSH_HOST }}" > ~/.ssh/known_hosts
-    - name: deploy
-      run: rsync -auzrv -e "ssh -i ~/.ssh/id_rsa -p ${{ secrets.DEPLOY_PORT }} -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" ${{ secrets.SSH_ACCOUNT }}@${{ secrets.SSH_HOST }}:/home/users/0/sub.jp-frog-test/web
+- name: deploy to lolipop
+  uses: AEnterprise/rsync-deploy@v1.0
+   env:
+       DEPLOY_KEY: ${{ secrets.SSH_KEY }}
+       ARGS: "-e -c -r --delete"
+       SERVER_PORT: ${{ secrets.DEPLOY_PORT }}
+       FOLDER: "./"
+       SERVER_IP: ${{ secrets.SSH_HOST }}
+       USERNAME: ${{ secrets.SSH_ACCOUNT }}
+       SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}
