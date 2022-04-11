@@ -1,4 +1,5 @@
 - name: deploy to lolipop
+  on: pull_request
   uses: AEnterprise/rsync-deploy@v1.0
    env:
        DEPLOY_KEY: ${{ secrets.SSH_KEY }}
