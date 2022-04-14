@@ -1,8 +1,7 @@
-# company-site
-デザイナーのワークフローを見直すプロジェクト
+# rsync ssh deploy for lolipop server
+デザイナーのワークフローを見直すプロジェクトサンプル
 
-バージョンとソース管理を行う。
-
+##利用するアプリケーションと環境
 Dreamweaver
 
 GitHub
