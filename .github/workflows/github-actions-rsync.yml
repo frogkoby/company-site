@@ -1,12 +1,11 @@
-name: lolipop
-
+name: Deployment for lolipop
 on: pull_request
-
 jobs:
-  build:
+  build-deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+
     - name: ssh key generate
       run: |
         mkdir -p ~/.ssh/
@@ -17,4 +16,3 @@ jobs:
       working-directory: ./
       run: |
         rsync -auvz -e "ssh -o 'StrictHostKeyChecking no' -tt -i ~/.ssh/id_rsa -p ${{ secrets.SERVER_PORT }}" ./ ${{ secrets.USERNAME }}@${{ secrets.SERVER_IP }}:${{ secrets.SERVER_DESTINATION }}
-
