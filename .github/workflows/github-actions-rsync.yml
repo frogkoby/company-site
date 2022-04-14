@@ -13,4 +13,4 @@ jobs:
         chmod 600 ~/.ssh/id_rsa
         echo "github.com" > ~/.ssh/known_hosts
     - name: deploy
-      run: rsync -auvz -e "ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }}" ./ ${{ secrets.USERNAME }}@${{ secrets.SERVER_IP }}:${{ secrets.SERVER_DESTINATION }}
+      run: rsync -auvz -e "ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }}" "" ${{ secrets.USERNAME }}@${{ secrets.SERVER_IP }}:${{ secrets.SERVER_DESTINATION }}
