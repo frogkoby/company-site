@@ -5,13 +5,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: deploy to server
-      uses: AEnterprise/rsync-deploy@v1.0
-      env:
-        DEPLOY_KEY: ${{ secrets.SERVER_SSH_KEY }}
-        ARGS: "-avzr --delete"
-        SERVER_PORT: ${{ secrets.SERVER_PORT }}
-        FOLDER: ""
-        SERVER_IP: ${{ secrets.SERVER_IP }}
-        USERNAME: ${{ secrets.USERNAME }}
-        SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}
+
+    - name: ssh key generate
+      run: |
+        mkdir -p ~/.ssh/
+        echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        echo "github.com" > ~/.ssh/known_hosts
+    - name: deploy
+      run: rsync -auvz -e "ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }}" "" ${{ secrets.USERNAME }}@${{ secrets.SERVER_IP }}:${{ secrets.SERVER_DESTINATION }}
