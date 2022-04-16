@@ -12,7 +12,8 @@ jobs:
         uses: actions/checkout@v1
         with:
           fetch-depth: 1
-      - name: Validate HTML5
+      - name: HTML5 Validator
         uses: Cyb3r-Jak3/html5validator-action@v7.1.0
         with:
-          root: /
+         root: tests/
+         blacklist: tests/invalid
