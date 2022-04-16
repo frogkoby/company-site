@@ -15,5 +15,5 @@ jobs:
       - name: HTML5 Validator
         uses: Cyb3r-Jak3/html5validator-action@v7.1.0
         with:
-         root: tests/
-         blacklist: tests/invalid
+         root: /
+         blacklist: ""
