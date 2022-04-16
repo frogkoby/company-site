@@ -10,5 +10,5 @@ jobs:
     - name: Lighthouse
       uses: foo-software/lighthouse-check-action@master
       with:
-        urls: 'https://frogkoby.github.io/company-site/'
+        urls: 'https://frogkoby.github.io/rsync-deploy-for-lolipop/'
 
