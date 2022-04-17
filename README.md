@@ -3,9 +3,13 @@
 
 ##利用するアプリケーションと環境
 Dreamweaver
+
 GitHub
+
 GitHub Actions
+
 　- HTML5 validator
   - Lighthouse CI
   - rsync(SSH)
+
 Notification for Teams
