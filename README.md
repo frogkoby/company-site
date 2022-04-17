@@ -7,8 +7,7 @@ Dreamweaver
 GitHub
 
 GitHub Actions
-
-　- HTML5 validator
+  - HTML5 validator
   - Lighthouse CI
   - rsync(SSH)
 
