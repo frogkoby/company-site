@@ -1,17 +1,11 @@
 # rsync ssh deploy for lolipop server
-デザイナーのワークフローを見直すプロジェクトサンプル
+デザイナーのコーディングワークフローを見直すプロジェクトサンプル
 
 ##利用するアプリケーションと環境
 Dreamweaver
-
 GitHub
-
 GitHub Actions
-
-　-html5 validator
- 
-  -Lighthouse
-  
-rsync(Hosting Server)
-
+　- HTML5 validator
+  - Lighthouse CI
+  - rsync(SSH)
 Notification for Teams
