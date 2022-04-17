@@ -13,4 +13,4 @@ GitHub Actions
 
 Notification for Teams
 
-![image](https://user-images.githubusercontent.com/45280010/163720585-61ac5828-26e1-4d2b-9561-61f61c0e663b.png)
+![ワークフロー全体図](https://user-images.githubusercontent.com/45280010/163720683-02be7794-7c3e-46df-bc31-6601d952a16c.png)
