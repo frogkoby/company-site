@@ -1,7 +1,8 @@
 # rsync ssh deploy for lolipop server
 デザイナーのコーディングワークフローを見直すプロジェクトサンプル
 
-##利用するアプリケーションと環境
+## 利用するアプリケーションと環境
+
 Dreamweaver
 
 GitHub
